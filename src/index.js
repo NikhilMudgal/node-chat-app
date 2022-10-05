@@ -14,10 +14,10 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 app.use(express.static(publicDirectoryPath))
 
 
-io.on('connection', (socket) => { // socket is an object that contains info about new connection
- socket.emit('message', "Welcome")
- socket.on('sendMessage', (data) => {
-     io.emit('message', data)
+io.on('connection', (socket) => { // socket is an object that contains info about new connection. Everytime a new connection is established with a server
+ socket.emit('message', "Welcome") // emiting an event
+ socket.on('sendMessage', (data) => { //receiving a message when event triggered
+     io.emit('message', data) // emit a connection to every single connection available
  });
 })
 
